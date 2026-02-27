@@ -1,6 +1,6 @@
 # Kanban
 
-Last updated: 2026-02-27T12:20:38.358Z
+Last updated: 2026-02-27T12:20:53.007Z
 WIP limit: max 3 items in Doing per board.
 
 ## MILO Kanban
@@ -21,10 +21,10 @@ WIP limit: max 3 items in Doing per board.
 - [M-010] Create a plan for sellingour assets asap with recommendations for how to sell and what to sell first - Owner: MILO - Lane: RealEstate - Priority: P1 - Due: TBD
 
 ### Blocked
-- (empty)
+- [M-008] test fix - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD
 
 ### Done
-- [M-008] test fix - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD - Result: Completed
+- (empty)
 
 ## MOUSSA Kanban
 
@@ -45,7 +45,7 @@ WIP limit: max 3 items in Doing per board.
 
 ```json
 {
-  "lastUpdated": "2026-02-27T12:20:38.358Z",
+  "lastUpdated": "2026-02-27T12:20:53.007Z",
   "wipLimit": 3,
   "tasks": [
     {
@@ -133,8 +133,8 @@ WIP limit: max 3 items in Doing per board.
       "priority": "P1",
       "due": "TBD",
       "board": "milo",
-      "status": "done",
-      "updatedAt": "2026-02-27T12:20:26.656Z",
+      "status": "blocked",
+      "updatedAt": "2026-02-27T12:20:53.007Z",
       "result": "Completed",
       "outputPath": ""
     },
