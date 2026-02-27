@@ -1,6 +1,6 @@
 # Kanban
 
-Last updated: 2026-02-27T12:53:05.433Z
+Last updated: 2026-02-27T12:53:10.355Z
 WIP limit: max 3 items in Doing per board.
 
 ## MILO Kanban
@@ -11,6 +11,7 @@ WIP limit: max 3 items in Doing per board.
 - [M-005] Build PhotonLabs pre-launch readiness checklist and milestone tracker - Owner: MILO - Lane: OMOTO - Priority: P1 - Due: TBD
 - [M-006] Create health routine tracker for training, back and ankle safety, and sleep - Owner: MILO - Lane: Health - Priority: P1 - Due: TBD
 - [M-007] Create family admin planning template to reduce communication friction - Owner: MILO - Lane: Family - Priority: P1 - Due: TBD
+- [M-008] test fix - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD
 - [M-009] final test - Owner: MILO - Lane: Admin - Priority: P2 - Due: TBD
 
 ### Next
@@ -21,7 +22,7 @@ WIP limit: max 3 items in Doing per board.
 - (empty)
 
 ### Blocked
-- [M-008] test fix - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD
+- (empty)
 
 ### Done
 - [M-010] Create a plan for sellingour assets asap with recommendations for how to sell and what to sell first - Owner: MILO - Lane: RealEstate - Priority: P1 - Due: TBD - Result: Test from command line
@@ -45,7 +46,7 @@ WIP limit: max 3 items in Doing per board.
 
 ```json
 {
-  "lastUpdated": "2026-02-27T12:53:05.433Z",
+  "lastUpdated": "2026-02-27T12:53:10.355Z",
   "wipLimit": 3,
   "tasks": [
     {
@@ -133,8 +134,8 @@ WIP limit: max 3 items in Doing per board.
       "priority": "P1",
       "due": "TBD",
       "board": "milo",
-      "status": "blocked",
-      "updatedAt": "2026-02-27T12:20:53.007Z",
+      "status": "backlog",
+      "updatedAt": "2026-02-27T12:53:10.355Z",
       "result": "Completed",
       "outputPath": ""
     },
