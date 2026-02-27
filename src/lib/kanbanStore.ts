@@ -1,6 +1,8 @@
 import "server-only";
 
 import { Octokit } from "octokit";
+import fs from "fs";
+import path from "path";
 import type {
   AccomplishmentEntry,
   AccomplishmentsState,
@@ -122,6 +124,68 @@ function boardLabel(board: BoardId): string {
 
 function statusLabel(status: TaskStatus): string {
   return status.charAt(0).toUpperCase() + status.slice(1);
+}
+
+function ensureDirectory(dirPath: string): void {
+  if (!dirPath || dirPath === 'TBD' || dirPath === 'none') {
+    return;
+  }
+  
+  const expanded = dirPath.replace(/^~/, process.env.HOME || '');
+  const fullPath = path.resolve(expanded);
+  
+  try {
+    if (!fs.existsSync(fullPath)) {
+      fs.mkdirSync(fullPath, { recursive: true });
+      console.log(`[kanban] Created directory: ${fullPath}`);
+    }
+  } catch (err) {
+    console.error(`[kanban] Failed to create directory ${fullPath}:`, err);
+  }
+}
+
+async function sendTelegramNotification(task: KanbanTask, result?: string, outputPath?: string): Promise<void> {
+  const telegramBotToken = process.env.TELEGRAM_BOT_TOKEN;
+  const telegramChatId = process.env.TELEGRAM_CHAT_ID;
+  
+  if (!telegramBotToken || !telegramChatId) {
+    console.log('[kanban] Telegram notification skipped: missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID');
+    return;
+  }
+  
+  try {
+    const message = [
+      `🎉 *Task Completed*`,
+      ``,
+      `Task: ${task.id}`,
+      `Title: ${task.title}`,
+      `Owner: ${task.owner}`,
+      `Lane: ${task.lane}`,
+      ``,
+      result ? `✅ Result: ${result}` : '',
+      outputPath ? `📁 Output: \`${outputPath}\`` : '',
+      ``,
+      `📝 [View in Kanban](https://kanban-xi-eight.vercel.app)`,
+    ].join('\n');
+    
+    const response = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: telegramChatId,
+        text: message,
+        parse_mode: 'Markdown',
+      }),
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Telegram API returned ${response.status}`);
+    }
+    
+    console.log(`[kanban] Telegram notification sent for task ${task.id}`);
+  } catch (err) {
+    console.error('[kanban] Failed to send Telegram notification:', err);
+  }
 }
 
 function defaultSeedTasks(): KanbanTask[] {
@@ -481,6 +545,11 @@ export async function updateTask(input: {
     task.result = input.result?.trim() || "Completed";
     task.outputPath = input.outputPath?.trim();
 
+    // Ensure output directory exists
+    if (task.outputPath) {
+      ensureDirectory(task.outputPath);
+    }
+
     const today = upsertTodayEntry(state.accomplishments);
     if (!today.completedIds.includes(task.id)) {
       today.completedIds.push(task.id);
@@ -489,6 +558,9 @@ export async function updateTask(input: {
       today.outputs.push(task.outputPath);
     }
     state.accomplishments.lastUpdated = nowIso();
+
+    // Send Telegram notification
+    await sendTelegramNotification(task, task.result, task.outputPath);
   }
 
   state.kanban.lastUpdated = nowIso();
