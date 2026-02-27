@@ -188,6 +188,66 @@ async function sendTelegramNotification(task: KanbanTask, result?: string, outpu
   }
 }
 
+async function findAndSendLatestPdf(task: KanbanTask): Promise<void> {
+  const projectDirs = [
+    '/Users/milomoussa/projects/realestate/pipeline',
+    '/Users/milomoussa/projects/icebreaker/exceptions',
+    '/Users/milomoussa/projects/photonlabs/pre-launch',
+    '/Users/milomoussa/projects/moussa-realestate/portfolio',
+  ];
+  
+  const now = Date.now();
+  let latestPdf = null;
+  let latestPdfPath = null;
+  
+  console.log(`[kanban] Searching for PDF files for task ${task.id}...`);
+  
+  for (const projectDir of projectDirs) {
+    try {
+      if (!fs.existsSync(projectDir)) {
+        console.log(`[kanban] Skipping ${projectDir} (not found)`);
+        continue;
+      }
+      
+      const files = fs.readdirSync(projectDir);
+      const pdfFiles = files
+        .filter(f => f.toLowerCase().endsWith('.pdf'))
+        .filter(f => {
+          const stats = fs.statSync(path.join(projectDir, f));
+          return stats.isFile() && stats.mtimeMs >= now - 60000 && stats.mtimeMs <= now;
+        })
+        .sort((a, b) => {
+          const statA = fs.statSync(path.join(projectDir, a));
+          const statB = fs.statSync(path.join(projectDir, b));
+          return statB.mtimeMs - statA.mtimeMs;
+        });
+      
+      if (pdfFiles.length > 0) {
+        const mostRecent = pdfFiles[0];
+        const pdfPath = path.join(projectDir, mostRecent);
+        const pdfMtime = fs.statSync(pdfPath).mtimeMs;
+        
+        if (!latestPdfPath || pdfMtime > (latestPdfPath ? 0 : 0)) {
+          latestPdf = mostRecent;
+          latestPdfPath = pdfPath;
+        }
+      }
+    } catch (err) {
+      console.error(`[kanban] Error searching ${projectDir}:`, err);
+    }
+  }
+  
+  if (latestPdf && latestPdfPath) {
+    console.log(`[kanban] Found PDF: ${latestPdfPath}`);
+    console.log(`[kanban] Sending PDF to Telegram...`);
+    
+    await sendTelegramNotification(task, '', latestPdfPath);
+  } else {
+    console.log(`[kanban] No recent PDF files found in last minute`);
+    await sendTelegramNotification(task, '', '');
+  }
+}
+
 function defaultSeedTasks(): KanbanTask[] {
   const createdAt = nowIso();
   return [
@@ -561,6 +621,12 @@ export async function updateTask(input: {
 
     // Send Telegram notification
     await sendTelegramNotification(task, task.result, task.outputPath);
+
+    // NEW: Auto-send PDF if task output ends with .pdf
+    if (input.status === "done" && task.outputPath && task.outputPath.toLowerCase().endsWith('.pdf')) {
+      console.log(`[kanban] Auto-sending PDF for task ${input.id}...`);
+      await findAndSendLatestPdf(task);
+    }
   }
 
   state.kanban.lastUpdated = nowIso();
