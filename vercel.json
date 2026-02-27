@@ -1,6 +1,6 @@
 {
   "env": {
-    "GITHUB_REPO": "milo-kanban-data",
+    "GITHUB_REPO": "milo-kanban-ui",
     "GITHUB_OWNER": "momoussa2000",
     "KANBAN_FILE_PATH": "kanban.md",
     "ACCOMPLISHMENTS_FILE_PATH": "accomplishments.md",
