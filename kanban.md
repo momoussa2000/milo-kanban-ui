@@ -1,6 +1,6 @@
 # Kanban
 
-Last updated: 2026-02-27T11:07:36.759Z
+Last updated: 2026-02-27T12:19:59.182Z
 WIP limit: max 3 items in Doing per board.
 
 ## MILO Kanban
@@ -12,6 +12,7 @@ WIP limit: max 3 items in Doing per board.
 - [M-007] Create family admin planning template to reduce communication friction - Owner: MILO - Lane: Family - Priority: P1 - Due: TBD
 - [M-008] test fix - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD
 - [M-009] final test - Owner: MILO - Lane: Admin - Priority: P2 - Due: TBD
+- [M-010] Create a plan for sellingour assets asap with recommendations for how to sell and what to sell first - Owner: MILO - Lane: RealEstate - Priority: P1 - Due: TBD
 
 ### Next
 - [M-002] Improve reporting compliance tracker and daily submission checks - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
@@ -45,7 +46,7 @@ WIP limit: max 3 items in Doing per board.
 
 ```json
 {
-  "lastUpdated": "2026-02-27T11:07:36.759Z",
+  "lastUpdated": "2026-02-27T12:19:59.182Z",
   "wipLimit": 3,
   "tasks": [
     {
@@ -146,6 +147,17 @@ WIP limit: max 3 items in Doing per board.
       "board": "milo",
       "status": "backlog",
       "updatedAt": "2026-02-27T11:07:36.759Z"
+    },
+    {
+      "id": "M-010",
+      "title": "Create a plan for sellingour assets asap with recommendations for how to sell and what to sell first",
+      "owner": "MILO",
+      "lane": "RealEstate",
+      "priority": "P1",
+      "due": "TBD",
+      "board": "milo",
+      "status": "backlog",
+      "updatedAt": "2026-02-27T12:19:59.182Z"
     }
   ]
 }
