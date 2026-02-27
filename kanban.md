@@ -1,6 +1,6 @@
 # Kanban
 
-Last updated: 2026-02-27T12:20:53.007Z
+Last updated: 2026-02-27T12:51:10.336Z
 WIP limit: max 3 items in Doing per board.
 
 ## MILO Kanban
@@ -18,13 +18,12 @@ WIP limit: max 3 items in Doing per board.
 
 ### Doing
 - [M-004] Set real estate pipeline rhythm checklist with follow-up discipline - Owner: MILO - Lane: RealEstate - Priority: P0 - Due: TBD
-- [M-010] Create a plan for sellingour assets asap with recommendations for how to sell and what to sell first - Owner: MILO - Lane: RealEstate - Priority: P1 - Due: TBD
 
 ### Blocked
 - [M-008] test fix - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD
 
 ### Done
-- (empty)
+- [M-010] Create a plan for sellingour assets asap with recommendations for how to sell and what to sell first - Owner: MILO - Lane: RealEstate - Priority: P1 - Due: TBD - Result: Test from command line
 
 ## MOUSSA Kanban
 
@@ -45,7 +44,7 @@ WIP limit: max 3 items in Doing per board.
 
 ```json
 {
-  "lastUpdated": "2026-02-27T12:20:53.007Z",
+  "lastUpdated": "2026-02-27T12:51:10.336Z",
   "wipLimit": 3,
   "tasks": [
     {
@@ -157,8 +156,10 @@ WIP limit: max 3 items in Doing per board.
       "priority": "P1",
       "due": "TBD",
       "board": "milo",
-      "status": "doing",
-      "updatedAt": "2026-02-27T12:20:38.358Z"
+      "status": "done",
+      "updatedAt": "2026-02-27T12:51:10.335Z",
+      "result": "Test from command line",
+      "outputPath": ""
     }
   ]
 }
