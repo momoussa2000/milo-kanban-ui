@@ -188,7 +188,31 @@ async function sendTelegramNotification(task: KanbanTask, result?: string, outpu
   }
 }
 
-async function findAndSendLatestPdf(task: KanbanTask): Promise<void> {
+async async function convertMarkdownToPdf(mdPath: string): Promise<string> {
+  try {
+    console.log(`[kanban] Converting markdown to PDF: ${mdPath}`);
+    
+    const pdfDir = path.join(path.dirname(mdPath), 'pdf');
+    const pdfName = path.basename(mdPath, '.md') + '.pdf';
+    const pdfPath = path.join(pdfDir, pdfName);
+    
+    // Ensure PDF directory exists
+    if (!fs.existsSync(pdfDir)) {
+      fs.mkdirSync(pdfDir, { recursive: true });
+    }
+    
+    const cmd = `pandoc "${mdPath}" -o "${pdfPath}" -V fontsize=12pt -V geometry:margin=1in --number-sections`;
+    execSync(cmd, { stdio: 'inherit' });
+    
+    console.log(`[kanban] Created PDF: ${pdfPath}`);
+    return pdfPath;
+  } catch (err) {
+    console.error(`[kanban] Failed to convert ${mdPath}:`, err);
+    return null;
+  }
+}
+
+function findAndSendLatestPdf(task: KanbanTask): Promise<void> {
   const projectDirs = [
     '/Users/milomoussa/projects/realestate/pipeline',
     '/Users/milomoussa/projects/icebreaker/exceptions',
@@ -610,6 +634,15 @@ export async function updateTask(input: {
       ensureDirectory(task.outputPath);
     }
 
+    // NEW: Convert markdown to PDF if output path ends with .md
+    if (task.outputPath && task.outputPath.toLowerCase().endsWith('.md')) {
+      console.log(`[kanban] Converting markdown to PDF: ${task.outputPath}`);
+      const pdfPath = await convertMarkdownToPdf(task.outputPath);
+      if (pdfPath) {
+        task.outputPath = pdfPath;
+      }
+    }
+
     const today = upsertTodayEntry(state.accomplishments);
     if (!today.completedIds.includes(task.id)) {
       today.completedIds.push(task.id);
@@ -622,7 +655,7 @@ export async function updateTask(input: {
     // Send Telegram notification
     await sendTelegramNotification(task, task.result, task.outputPath);
 
-    // NEW: Auto-send PDF if task output ends with .pdf
+    // Auto-send PDF if task output ends with .pdf
     if (input.status === "done" && task.outputPath && task.outputPath.toLowerCase().endsWith('.pdf')) {
       console.log(`[kanban] Auto-sending PDF for task ${input.id}...`);
       await findAndSendLatestPdf(task);
