@@ -187,7 +187,7 @@ async function sendTelegramNotification(task: KanbanTask, result?: string, outpu
     console.error('[kanban] Failed to send Telegram notification:', err);
   }
 }
- 
+
 async function convertMarkdownToPdf(mdPath: string): Promise<string> {
   try {
     console.log(`[kanban] Converting markdown to PDF: ${mdPath}`);
