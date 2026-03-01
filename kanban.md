@@ -1,6 +1,6 @@
 # Kanban
 
-Last updated: 2026-03-01T13:55:55.620Z
+Last updated: 2026-03-01T16:08:08.817Z
 WIP limit: max 3 items in Doing per board.
 
 ## MILO Kanban
@@ -12,6 +12,7 @@ WIP limit: max 3 items in Doing per board.
 - [M-006] Create health routine tracker for training, back and ankle safety, and sleep - Owner: MILO - Lane: Health - Priority: P1 - Due: TBD
 - [M-008] test fix - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD
 - [M-009] final test - Owner: MILO - Lane: Admin - Priority: P2 - Due: TBD
+- [M-011] Create design for ice cups - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD
 
 ### Next
 - [M-002] Improve reporting compliance tracker and daily submission checks - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
@@ -45,7 +46,7 @@ WIP limit: max 3 items in Doing per board.
 
 ```json
 {
-  "lastUpdated": "2026-03-01T13:55:55.620Z",
+  "lastUpdated": "2026-03-01T16:08:08.817Z",
   "wipLimit": 3,
   "tasks": [
     {
@@ -161,6 +162,17 @@ WIP limit: max 3 items in Doing per board.
       "updatedAt": "2026-02-27T12:51:10.335Z",
       "result": "Test from command line",
       "outputPath": ""
+    },
+    {
+      "id": "M-011",
+      "title": "Create design for ice cups",
+      "owner": "MILO",
+      "lane": "Icebreaker",
+      "priority": "P1",
+      "due": "TBD",
+      "board": "milo",
+      "status": "backlog",
+      "updatedAt": "2026-03-01T16:08:08.817Z"
     }
   ]
 }
