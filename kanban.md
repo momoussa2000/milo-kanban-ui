@@ -1,6 +1,6 @@
 # Kanban
 
-Last updated: 2026-03-03T22:32:38.080Z
+Last updated: 2026-03-03T22:49:05.899Z
 WIP limit: max 3 items in Doing per board.
 
 ## MILO Kanban
@@ -13,6 +13,7 @@ WIP limit: max 3 items in Doing per board.
 - [M-007] Create family admin planning template to reduce communication friction - Owner: MILO - Lane: Family - Priority: P1 - Due: TBD
 - [M-008] test fix - Owner: MILO - Lane: Icebreaker - Priority: P1 - Due: TBD
 - [M-009] final test - Owner: MILO - Lane: Admin - Priority: P2 - Due: TBD
+- [M-014] draft 5 icebreaker cup concept directions for client review - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
 
 ### Next
 - [M-002] Improve reporting compliance tracker and daily submission checks - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
@@ -48,7 +49,7 @@ WIP limit: max 3 items in Doing per board.
 
 ```json
 {
-  "lastUpdated": "2026-03-03T22:32:38.080Z",
+  "lastUpdated": "2026-03-03T22:49:05.899Z",
   "wipLimit": 3,
   "tasks": [
     {
@@ -197,6 +198,17 @@ WIP limit: max 3 items in Doing per board.
       "board": "milo",
       "status": "doing",
       "updatedAt": "2026-03-03T22:32:38.080Z"
+    },
+    {
+      "id": "M-014",
+      "title": "draft 5 icebreaker cup concept directions for client review",
+      "owner": "MILO",
+      "lane": "Icebreaker",
+      "priority": "P0",
+      "due": "TBD",
+      "board": "milo",
+      "status": "backlog",
+      "updatedAt": "2026-03-03T22:49:05.899Z"
     }
   ]
 }
