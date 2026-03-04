@@ -1,6 +1,6 @@
 # Kanban
 
-Last updated: 2026-03-04T07:41:17.517Z
+Last updated: 2026-03-04T07:41:19.217Z
 WIP limit: max 3 items in Doing per board.
 
 ## MILO Kanban
@@ -18,7 +18,6 @@ WIP limit: max 3 items in Doing per board.
 - [M-016] prepare 3 concept directions for icebreaker summer campaign - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
 - [M-017] prepare a one page brief for icebreaker cup design test - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
 - [M-018] produce another quick icebreaker draft - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
-- [M-019] generate cup sketch ideas and execution bullets - Owner: MILO - Lane: Admin - Priority: P1 - Due: TBD
 
 ### Next
 - [M-002] Improve reporting compliance tracker and daily submission checks - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
@@ -34,6 +33,7 @@ WIP limit: max 3 items in Doing per board.
 
 ### Done
 - [M-010] Create a plan for sellingour assets asap with recommendations for how to sell and what to sell first - Owner: MILO - Lane: RealEstate - Priority: P1 - Due: TBD - Result: Test from command line
+- [M-019] generate cup sketch ideas and execution bullets - Owner: MILO - Lane: Admin - Priority: P1 - Due: TBD - Result: Generated HTML report: 2026-03-04-M-019-generate-cup-sketch-ideas-and-execution-bullets.html - Output: /Users/milomoussa/projects/realestate/tmp/operator_docs/2026-03-04-M-019-generate-cup-sketch-ideas-and-execution-bullets.html
 
 ## MOUSSA Kanban
 
@@ -54,7 +54,7 @@ WIP limit: max 3 items in Doing per board.
 
 ```json
 {
-  "lastUpdated": "2026-03-04T07:41:17.517Z",
+  "lastUpdated": "2026-03-04T07:41:19.217Z",
   "wipLimit": 3,
   "tasks": [
     {
@@ -267,8 +267,10 @@ WIP limit: max 3 items in Doing per board.
       "priority": "P1",
       "due": "TBD",
       "board": "milo",
-      "status": "backlog",
-      "updatedAt": "2026-03-04T07:41:17.517Z"
+      "status": "done",
+      "updatedAt": "2026-03-04T07:41:19.211Z",
+      "result": "Generated HTML report: 2026-03-04-M-019-generate-cup-sketch-ideas-and-execution-bullets.html",
+      "outputPath": "/Users/milomoussa/projects/realestate/tmp/operator_docs/2026-03-04-M-019-generate-cup-sketch-ideas-and-execution-bullets.html"
     }
   ]
 }
