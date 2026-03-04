@@ -1,6 +1,6 @@
 # Kanban
 
-Last updated: 2026-03-04T07:40:29.429Z
+Last updated: 2026-03-04T07:40:48.538Z
 WIP limit: max 3 items in Doing per board.
 
 ## MILO Kanban
@@ -17,6 +17,7 @@ WIP limit: max 3 items in Doing per board.
 - [M-015] api connectivity check - Owner: MILO - Lane: Admin - Priority: P2 - Due: TBD
 - [M-016] prepare 3 concept directions for icebreaker summer campaign - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
 - [M-017] prepare a one page brief for icebreaker cup design test - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
+- [M-018] produce another quick icebreaker draft - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
 
 ### Next
 - [M-002] Improve reporting compliance tracker and daily submission checks - Owner: MILO - Lane: Icebreaker - Priority: P0 - Due: TBD
@@ -52,7 +53,7 @@ WIP limit: max 3 items in Doing per board.
 
 ```json
 {
-  "lastUpdated": "2026-03-04T07:40:29.429Z",
+  "lastUpdated": "2026-03-04T07:40:48.538Z",
   "wipLimit": 3,
   "tasks": [
     {
@@ -245,6 +246,17 @@ WIP limit: max 3 items in Doing per board.
       "board": "milo",
       "status": "backlog",
       "updatedAt": "2026-03-04T07:40:29.421Z"
+    },
+    {
+      "id": "M-018",
+      "title": "produce another quick icebreaker draft",
+      "owner": "MILO",
+      "lane": "Icebreaker",
+      "priority": "P0",
+      "due": "TBD",
+      "board": "milo",
+      "status": "backlog",
+      "updatedAt": "2026-03-04T07:40:48.538Z"
     }
   ]
 }
